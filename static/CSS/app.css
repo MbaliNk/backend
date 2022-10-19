@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre&family=Lora:ital@1&display=swap');
+:root{
+    --bg-color:#e1c3c3;
+    --text-color:white;
+    --headline-color:rgb(138, 115, 115);
+    --button-color:rgb(137, 95, 95);
+    --accent-color:rgb(98, 68, 68);
+    --headline-font: 'Lora', serif;
+    --body-font: 'Frank Ruhl Libre', serif;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body{
+    font-size: 16px;
+    font-family: var(--body-font);
+    background-color:var(--bg-color)
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: var(--accent-color);
+}
+
+.logo{
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: inherit;
+    letter-spacing: 2px;
+}
+
+.nav-links{
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+}
+
+.nav-links li{
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: initial;
+    font-size: 1.3rem;
+    font-family: var(--headline-font);
+}
+
+nav > .burger > div{
+    width: 25px;
+    height: 3px;
+    background-color: var(--button-color);
+    margin: 5px;
+    transition: all 0.3 ease;
+}
+.burger{
+    display: none;
+}
+
+/* tablet zone */
+@media screen and ( max-width: 1024px){
+    .nav-links{
+        width: 50%;
+    }
+    
+}
+
+/* HERO SECTION STYLE STARTS HERE */
+
+
+
+.heroSection{
+    height: calc(100vh - 8vh);
+    background-image: url("../images/glossiestprincipessa-removebg-preview.png") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+}
+
+.heroSection::before{
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color:rgb(152, 126, 119);
+    position: absolute;
+    opacity: 0.4;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 15rem;
+}
+
+.Sectiontitle{
+    color: aliceblue;
+    font-size: 2rem;
+    font-weight: lighter;
+    letter-spacing: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: lato;
+    text-shadow: 0 1px rgb(152, 126, 119);
+}
+
+.main p{
+    color: antiquewhite;
+    line-height: 1.6rem;
+    font-size: 1.2rem;
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+
+.main .hero{
+    width: 100px;
+    display: inline-block;
+    border-radius: 5px;
+    outline: rgb(152, 126, 119);
+    border: none;
+
+    margin-top: 10px;
+    transition: all 0.4s ease-in;
+
+}
+
+.hero.hover{
+    background-color: var(--button-color);
+
+}
+
+.hero a{
+    padding: 10px 0px;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-size: 1rem;
+    display: inline-block;
+    transition: all 0.4s ease-in;
+}
+
+.hero a:hover{
+    color: var(--text-color);
+}
+
+.category{
+    height: 10vh;
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category a{
+    color:darkgrey;
+    text-decoration: none;
+}
+
+.active{
+    background-color: rgb(98, 68, 68);
+    color: antiquewhite;
+}
+.card-wrapper{
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.main-content{
+    background-color: var(--accent-color);
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-itms{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid antiquewhite;
+}
+
+.blogImage{
+    width: 30%;
+}
+
+.blogImage img{
+    min-width: 100%;
+    
+}
+
+article{
+    width: 30%;
+    background-color: rgb(152, 126, 119);
+}
+
+article > div.search-box input{
+    width: 90%;
+    border-radius: 5px;
+    display: block;
+    padding: 10px;
+    border: none;
+    margin: 20px auto;
+    font-size: 1.6rem;
+    
+}
