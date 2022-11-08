@@ -4,13 +4,17 @@ from multiprocessing import context
 from operator import index
 from re import template
 from telnetlib import STATUS
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 import datetime
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from .models import Book, Post, Comment
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from .forms import Commentforms
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -73,5 +77,36 @@ def post_detail(request,year,month,day,post):
          comment_form =Commentforms()        
     return render(request,'post_detail.html',{'post':post,'comments':comments,'new_comment':new_comment,'comment_form':comment_form})
 
+# Create your views here.
+def loginView(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username =  form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username,password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in {username}.")
+                return redirect("blog:profile")
+            else:
+             messages.error(request, F"Invalid username or password")
+        else:
+         messages.error(request, F"Invalid username or password")
+    form = AuthenticationForm()            
+    return render(request,"authenticate/login.html", context={"form":form})
 
+@login_required(login_url='blog:login')
+def profileView(request):
+    return render(request, 'profile.html',{})
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
+def aboutpage(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
 
